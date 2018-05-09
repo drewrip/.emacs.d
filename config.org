@@ -1,0 +1,27 @@
+* Importing Packages
+  Starting imports
+#+BEGIN_SRC emacs-lisp
+
+#+END_SRC
+
+
+* Basics
+  Some basic info and configuration settings
+
+** Personal Info
+
+#+BEGIN_SRC emacs-lisp
+  (setq user-full-name "Drew Ripberger"
+        inhibit-startup-screen t
+        make-backup-files nil)
+  (global-prettify-symbols-mode t)
+#+END_SRC
+
+** UI Style
+
+#+BEGIN_SRC emacs-lisp
+  (scroll-bar-mode -1)
+  (horizontal-scroll-bar-mode -1)
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+#+END_SRC
