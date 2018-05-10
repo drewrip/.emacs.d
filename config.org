@@ -13,7 +13,7 @@
 ** Theme (Oceanic)
    Theme set to Oceanic, source can be found [[https://github.com/terry3/oceanic-theme][Here.]] Though it is included in the themes directory by default.
 #+BEGIN_SRC emacs-lisp
-  (add-to-list 'custom-theme-load-path "./themes")
+  (setq custom-theme-directory (concat user-emacs-directory "themes"))
   (load-theme 'oceanic t)
   (add-hook 'after-make-frame-functions
           (lambda (frame)
