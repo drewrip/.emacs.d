@@ -1,13 +1,5 @@
-* Importing Packages
-  Starting imports
-#+BEGIN_SRC emacs-lisp
-
-#+END_SRC
-
-
 * Basics
   Some basic info and configuration settings
-
 ** Personal Info
 
 #+BEGIN_SRC emacs-lisp
@@ -24,4 +16,27 @@
   (horizontal-scroll-bar-mode -1)
   (menu-bar-mode -1)
   (tool-bar-mode -1)
+  (setq make-backup-files nil)
+  (setq auto-save-default nil)
+  (when window-system (add-hook 'prog-mode-hook 'hl-line-mode))
+  ;; Line Numbers
+  (global-linum-mode t)
+  ;; Removing Fringes
+  (set-face-attribute 'fringe nil
+                      :foreground (face-foreground 'default)
+                      :background (face-background 'default))
+  (set-face-background 'linum "#7e9bbb")
+#+END_SRC
+
+** Theme (Oceanic)
+   Theme set to Oceanic, source can be found [[https://github.com/terry3/oceanic-theme][Here.]] Though it is included in the themes directory by default.
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'custom-theme-load-path "./themes")
+  (set-frame-parameter nil 'background-mode 'dark)
+  (load-theme 'oceanic t)
+  (add-hook 'after-make-frame-functions
+          (lambda (frame)
+	      (set-frame-parameter frame 'background-mode 'dark)
+	      (set-terminal-parameter frame 'background-mode 'dark)
+            (enable-theme 'oceanic)))
 #+END_SRC
