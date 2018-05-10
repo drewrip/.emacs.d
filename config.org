@@ -1,3 +1,9 @@
+* Imports
+  #+BEGIN_SRC emacs-lisp
+    (package-install 'htmlize)
+    (require 'htmlize)
+  #+END_SRC
+
 * Basics
   Some basic info and configuration settings
 ** Personal Info
@@ -32,7 +38,6 @@
   (tool-bar-mode -1)
   (setq make-backup-files nil)
   (setq auto-save-default nil)
-  (when window-system (add-hook 'prog-mode-hook 'hl-line-mode))
   (fringe-mode 12)
   ;; Line Numbers
   (global-linum-mode t)
