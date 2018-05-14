@@ -2,6 +2,9 @@
   #+BEGIN_SRC emacs-lisp
     (package-install 'htmlize)
     (require 'htmlize)
+    (package-install 'org-bullets)
+    (require 'org-bullets)
+    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))    
   #+END_SRC
 
 * Basics
@@ -40,9 +43,17 @@
   (setq auto-save-default nil)
   (fringe-mode 12)
   ;; Line Numbers
-  (global-linum-mode t)
+  (add-hook 'prog-mode-hook 'linum-mode)
   ;; Removing Fringes
   (set-face-attribute 'fringe nil
                       :foreground (face-foreground 'default)
                       :background (face-background 'default))
 #+END_SRC
+
+* Programming Languages
+ ** 
+  #+BEGIN_SRC emacs-lisp
+    ;;Golang
+    (package-install 'go-mode)
+    (require 'go-mode)
+  #+END_SRC
