@@ -53,9 +53,12 @@
 #+END_SRC
 
 * Programming Languages
- ** 
   #+BEGIN_SRC emacs-lisp
     ;;Golang
     (package-install 'go-mode)
     (require 'go-mode)
+
+    ;;Rust
+    (package-install 'rust-mode)
+    (require 'rust-mode)
   #+END_SRC
