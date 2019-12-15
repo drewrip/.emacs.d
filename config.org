@@ -63,5 +63,10 @@
     (require 'rust-mode)
 
     ;;latex
+    (package-install 'auctex)
+    (require 'auctex)
+    (use-package auctex
+		:defer t
+		:ensure t)
     (setq latex-run-command "pdflatex")
   #+END_SRC
