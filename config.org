@@ -61,4 +61,7 @@
     ;;Rust
     (package-install 'rust-mode)
     (require 'rust-mode)
+
+    ;;latex
+    (setq latex-run-command "pdflatex")
   #+END_SRC
