@@ -62,11 +62,15 @@
     (package-install 'rust-mode)
     (require 'rust-mode)
 
-    ;;latex
-    (package-install 'auctex)
-    (require 'auctex)
-    (use-package auctex
-		:defer t
-		:ensure t)
-    (setq latex-run-command "pdflatex")
+    ;;Latex
+
+	(package-install 'auctex)
+	(package-install 'company-auctex)
+
+	(require 'tex)
+	(require 'company-auctex)
+
+	(company-auctex-init)
+    (setq tex-run-command "pdflatex")
+
   #+END_SRC
