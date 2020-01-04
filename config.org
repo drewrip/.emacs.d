@@ -1,5 +1,6 @@
 * Imports
   #+BEGIN_SRC emacs-lisp
+    (package-refresh-contents)
     (package-install 'htmlize)
     (require 'htmlize)
     (package-install 'org-bullets)
@@ -53,7 +54,9 @@
 #+END_SRC
 
 * Programming Languages
+
   #+BEGIN_SRC emacs-lisp
+
     ;;Golang
     (package-install 'go-mode)
     (require 'go-mode)
@@ -61,6 +64,10 @@
     ;;Rust
     (package-install 'rust-mode)
     (require 'rust-mode)
+    
+    ;;Haskell
+    (package-install 'haskell-mode)
+    (require 'haskell-mode)
 
     ;;Latex
 
@@ -72,5 +79,9 @@
 
 	(company-auctex-init)
     (setq tex-run-command "pdflatex")
+
+  (defun flymake-get-tex-args (file-name)
+  (list "pdflatex"
+  (list "-file-line-error" "-draftmode" "-interaction=nonstopmode" file-name)))
 
   #+END_SRC
