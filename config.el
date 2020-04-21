@@ -10,13 +10,9 @@
       make-backup-files nil)
 (global-prettify-symbols-mode t)
 
-(setq custom-theme-directory (concat user-emacs-directory "themes"))
-(load-theme 'oceanic t)
-(add-hook 'after-make-frame-functions
-        (lambda (frame)
-	    (set-frame-parameter frame 'background-mode 'dark)
-	    (set-terminal-parameter frame 'background-mode 'dark)
-          (enable-theme 'oceanic)))
+(package-install 'solarized-theme)
+(require 'solarized-theme)
+(load-theme 'solarized-dark t)
 
 (if (display-graphic-p)
   (progn
@@ -34,29 +30,40 @@
                     :foreground (face-foreground 'default)
                     :background (face-background 'default))
 
-;;Golang
-  (package-install 'go-mode)
-  (require 'go-mode)
+(setq initial-major-mode 'org-mode)
+(setq org-ellipsis "⤵")
+(setq org-src-fontify-natively t)
+(setq org-src-tab-acts-natively t)
 
-  ;;Rust
-  (package-install 'rust-mode)
-  (require 'rust-mode)
+(setq-default tab-width 4)
 
-  ;;Haskell
-  (package-install 'haskell-mode)
-  (require 'haskell-mode)
+	    ;;Golang
+	    (package-install 'go-mode)
+	    (require 'go-mode)
 
-  ;;Latex
+	    ;;Rust
+	    (package-install 'rust-mode)
+	    (require 'rust-mode)
 
-      (package-install 'auctex)
-      (package-install 'company-auctex)
+	    ;;Haskell
+	    (package-install 'haskell-mode)
+	    (require 'haskell-mode)
 
-      (require 'tex)
-      (require 'company-auctex)
+	    ;;Latex
 
-      (company-auctex-init)
-  (setq tex-run-command "pdflatex")
+	    (package-install 'auctex)
+	    (package-install 'company-auctex)
 
-(defun flymake-get-tex-args (file-name)
-(list "pdflatex"
-(list "-file-line-error" "-draftmode" "-interaction=nonstopmode" file-name)))
+	    (require 'tex)
+	    (require 'company-auctex)
+
+	    (company-auctex-init)
+	    (setq tex-run-command "pdflatex")
+
+	    (defun flymake-get-tex-args (file-name)
+	    (list "pdflatex"
+	    (list "-file-line-error" "-draftmode" "-interaction=nonstopmode" file-name)))
+
+	    ;; YAML
+	    (package-install 'yaml-mode)
+(require 'yaml-mode)
