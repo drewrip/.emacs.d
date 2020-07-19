@@ -1,17 +1,20 @@
-(package-refresh-contents)
-(package-install 'htmlize)
-(require 'htmlize)
-(package-install 'org-bullets)
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(unless (package-installed-p 'use-package)
+      (package-refresh-contents)
+      (package-install 'use-package))
+
+    (require 'use-package)
+    (setq use-package-always-ensure t)
+
+(use-package htmlize)
+    (use-package org-bullets)
+    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 (setq user-full-name "Drew Ripberger"
       inhibit-startup-screen t
       make-backup-files nil)
 (global-prettify-symbols-mode t)
 
-(package-install 'nord-theme)
-(require 'nord-theme)
+(use-package nord-theme)
 (load-theme 'nord t)
 
 (if (display-graphic-p)
@@ -30,13 +33,11 @@
                     :foreground (face-foreground 'default)
                     :background (face-background 'default))
 
-(package-install 'all-the-icons)
-(require 'all-the-icons)
+(use-package all-the-icons)
 (unless (member "all-the-icons" (font-family-list))
   (all-the-icons-install-fonts t))
 
-(package-install 'neotree)
-(require 'neotree)
+(use-package neotree)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 (global-set-key (kbd "C-x <prior>") 'neotree-toggle)
 
@@ -55,33 +56,28 @@
 
 (setq-default tab-width 4)
 
-	    ;;Golang
-	    (package-install 'go-mode)
-	    (require 'go-mode)
+;;Golang
+(use-package go-mode)
 
-	    ;;Rust
-	    (package-install 'rust-mode)
-	    (require 'rust-mode)
+;;Rust
+(use-package rust-mode)
 
-	    ;;Haskell
-	    (package-install 'haskell-mode)
-	    (require 'haskell-mode)
+;;Haskell
+(use-package haskell-mode)
 
-	    ;;Latex
+;;Latex
 
-	    (package-install 'auctex)
-	    (package-install 'company-auctex)
+(use-package auctex
+  :defer t
+  :ensure t)
+(use-package company-auctex)
 
-	    (require 'tex)
-	    (require 'company-auctex)
+(company-auctex-init)
+(setq tex-run-command "pdflatex")
 
-	    (company-auctex-init)
-	    (setq tex-run-command "pdflatex")
+(defun flymake-get-tex-args (file-name)
+  (list "pdflatex"
+		(list "-file-line-error" "-draftmode" "-interaction=nonstopmode" file-name)))
 
-	    (defun flymake-get-tex-args (file-name)
-	    (list "pdflatex"
-	    (list "-file-line-error" "-draftmode" "-interaction=nonstopmode" file-name)))
-
-	    ;; YAML
-	    (package-install 'yaml-mode)
-(require 'yaml-mode)
+;; YAML
+(use-package yaml-mode)
