@@ -10,9 +10,9 @@
       make-backup-files nil)
 (global-prettify-symbols-mode t)
 
-(package-install 'solarized-theme)
-(require 'solarized-theme)
-(load-theme 'solarized-dark t)
+(package-install 'nord-theme)
+(require 'nord-theme)
+(load-theme 'nord t)
 
 (if (display-graphic-p)
   (progn
@@ -30,10 +30,28 @@
                     :foreground (face-foreground 'default)
                     :background (face-background 'default))
 
+(package-install 'all-the-icons)
+(require 'all-the-icons)
+(unless (member "all-the-icons" (font-family-list))
+  (all-the-icons-install-fonts t))
+
+(package-install 'neotree)
+(require 'neotree)
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+(global-set-key (kbd "C-x <prior>") 'neotree-toggle)
+
+(setq org-todo-keywords
+    '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)")))
 (setq initial-major-mode 'org-mode)
 (setq org-ellipsis "⤵")
 (setq org-src-fontify-natively t)
 (setq org-src-tab-acts-natively t)
+(global-prettify-symbols-mode t)
+(setq org-directory "~/Dropbox/org")
+(setq org-agenda-files (directory-files-recursively "~/Dropbox/org/" "\\.org$"))
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+
+(global-set-key (kbd "C-x <next>") 'org-agenda-list)
 
 (setq-default tab-width 4)
 
