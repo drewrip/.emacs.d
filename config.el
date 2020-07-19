@@ -42,7 +42,7 @@
 (global-set-key (kbd "C-x <prior>") 'neotree-toggle)
 
 (setq org-todo-keywords
-    '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)")))
+	'((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)")))
 (setq initial-major-mode 'org-mode)
 (setq org-ellipsis "⤵")
 (setq org-src-fontify-natively t)
@@ -51,8 +51,8 @@
 (setq org-directory "~/Dropbox/org")
 (setq org-agenda-files (directory-files-recursively "~/Dropbox/org/" "\\.org$"))
 (setq org-default-notes-file (concat org-directory "/notes.org"))
-
-(global-set-key (kbd "C-x <next>") 'org-agenda-list)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(setq initial-buffer-choice (concat org-directory "/notes.org"))
 
 (setq-default tab-width 4)
 
