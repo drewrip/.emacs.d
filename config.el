@@ -1,13 +1,15 @@
 (unless (package-installed-p 'use-package)
-      (package-refresh-contents)
-      (package-install 'use-package))
+  (package-refresh-contents)
+  (package-install 'use-package))
 
-    (require 'use-package)
-    (setq use-package-always-ensure t)
+(eval-when-compile
+  (require 'use-package))
+
+(setq use-package-always-ensure t)
 
 (use-package htmlize)
-    (use-package org-bullets)
-    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(use-package org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 (setq user-full-name "Drew Ripberger"
       inhibit-startup-screen t
@@ -43,16 +45,16 @@
 
 (setq org-todo-keywords
 	'((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)")))
-(setq initial-major-mode 'org-mode)
+;; (setq initial-major-mode 'org-mode)
 (setq org-ellipsis "⤵")
 (setq org-src-fontify-natively t)
 (setq org-src-tab-acts-natively t)
 (global-prettify-symbols-mode t)
-(setq org-directory "~/Dropbox/org")
-(setq org-agenda-files (directory-files-recursively "~/Dropbox/org/" "\\.org$"))
-(setq org-default-notes-file (concat org-directory "/notes.org"))
+;; (setq org-directory "~/Dropbox/org")
+;; (setq org-agenda-files (directory-files-recursively "~/Dropbox/org/" "\\.org$"))
+;;(setq org-default-notes-file (concat org-directory "/notes.org"))
 (global-set-key (kbd "C-c a") 'org-agenda)
-(setq initial-buffer-choice (concat org-directory "/notes.org"))
+;; (setq initial-buffer-choice (concat org-directory "/notes.org"))
 
 (setq-default tab-width 4)
 

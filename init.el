@@ -13,7 +13,7 @@
 (require 'package)
 (when (>= emacs-major-version 24)
   (require 'package)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
   (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t))
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
@@ -24,6 +24,11 @@
 (unless (package-installed-p 'org)
   (package-refresh-contents)
   (package-install 'org))
+
+;; Make sure use-package is installed
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 ;; Org plus contrib needs to be loaded before any org related functionality is called
 (unless (package-installed-p 'org-plus-contrib)
