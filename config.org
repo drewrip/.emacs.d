@@ -87,33 +87,37 @@ Make org-mode easier and look nicer
 * Programming Languages
 
   #+BEGIN_SRC emacs-lisp
-
+	
 	(setq-default tab-width 4)
-
+	
 	;;Golang
 	(use-package go-mode)
-
+	
 	;;Rust
 	(use-package rust-mode)
-
+	
 	;;Haskell
 	(use-package haskell-mode)
-
+	
 	;;Latex
-
+	
 	(use-package auctex
 	  :defer t
 	  :ensure t)
 	(use-package company-auctex)
-
+	
 	(company-auctex-init)
 	(setq tex-run-command "pdflatex")
-
+	
 	(defun flymake-get-tex-args (file-name)
 	  (list "pdflatex"
 			(list "-file-line-error" "-draftmode" "-interaction=nonstopmode" file-name)))
-
+	
 	;; YAML
 	(use-package yaml-mode)
-
+	
+	;; Better HTML and web programming support
+	(use-package web-mode)
+	(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+	
   #+END_SRC
