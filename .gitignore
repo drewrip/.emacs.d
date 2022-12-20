@@ -2,4 +2,7 @@ config.el
 auto-save-list/
 elpa/
 url/
+straight/
+eshell/
+.lsp-session*
 .cache/
