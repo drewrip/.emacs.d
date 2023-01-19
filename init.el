@@ -149,6 +149,10 @@
     (require 'lsp-pyright)
     (lsp))))
 
+;; C
+
+(setq-default c-basic-offset 4)
+
 ;; Markdown
 (use-package markdown-mode
   :ensure t
